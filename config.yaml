@@ -1,0 +1,24 @@
+# ========== 数据参数 ==========
+data:
+  raw_dir: "./data/raw"               # 原始视频放这里
+  processed_dir: "./data/processed"    # 提取后的.npy放这里
+  roi_box: [400, 200, 700, 1000]      # 试纸在画面中的位置
+  fps_target: 1                       # 每秒抽几帧
+  seq_length: 900                     # 时间步长T（15分钟×60秒）
+
+# ========== 模型参数 ==========
+model:
+  input_channels: 8
+  tcn_filters: [64, 128]
+  d_model: 128
+  nhead: 4
+  num_layers: 2
+  num_classes: 3
+  dropout: 0.3
+# ========== 训练参数 ==========
+train:
+  epochs: 100
+  batch_size: 16
+  lr: 0.001
+  device: "cuda"                     # 没显卡就改成 "cpu"
+  checkpoint_dir: "./checkpoints"
